@@ -1,0 +1,21 @@
+.filter-toggle {
+  user-select: none;
+  font-size: 0.8em;
+}
+
+.filter-toggle__label {
+  cursor: pointer;
+}
+
+.filter-toggle__icon--hidden {
+  display: none;
+}
+
+.filter-toggle__checkbox {
+  display: none;
+}
+
+.filter-toggle__text {
+  cursor: pointer;
+  font-style: italic;
+}

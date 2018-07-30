@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/globals.css" />
+  <link rel="stylesheet" href="/css/new-todo-form.css" />
+  <link rel="stylesheet" href="/css/filter-toggle.css" />
+  <link rel="stylesheet" href="/css/todo-view.css" />
+  <link rel="stylesheet" href="/css/todo-list.css" />
+  <title>To Do</title>
+</head>
+
+<body>
+
+  <main class="todo-view">
+    <h1 class="todo-view__header">To Do</h1>
+
+    <form id="formComponent" class="new-todo-form">
+      <input class="new-todo-form__input" type="text" placeholder="Add todo here" />
+      <button class="new-todo-form__submit" type="submit">Add</button>
+    </form>
+
+    <div id="toggleComponent" class="filter-toggle">
+      <input class="filter-toggle__checkbox" id="filterToggle" type="checkbox" />
+      <label class="filter-toggle__label" for="filterToggle">
+        <i class="far fa-check-square filter-toggle__icon--hidden"></i>
+        <i class="far fa-square"></i>
+      </label>
+      <span class="filter-toggle__text">Show All</span>
+    </div>
+
+    <ul id="todoListComponent" class="todo-list">
+      <li class="todo-list__item">
+        <input class="todo-list__item-checkbox" id="123" type="checkbox" />
+        <label class="todo-list__item-label" for="123">
+          <i class="far fa-check-square"></i>
+          <!-- <i class="far fa-square"></i> -->
+        </label>
+        <span class="todo-list__item-text">Buy milk</span>
+      </li>
+      <li class="todo-list__item">
+        <input class="todo-list__item-checkbox" id="456" type="checkbox" />
+        <label class="todo-list__item-label" for="456">
+          <i class="far fa-check-square"></i>
+          <!-- <i class="far fa-square"></i> -->
+        </label>
+        <span class="todo-list__item-text">Buy candy</span>
+      </li>
+    </ul>
+  </main>
+
+  <script type="module" src="/js/index.js"></script>
+</body>
+
+</html>
