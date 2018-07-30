@@ -18,6 +18,7 @@ If Chrome is already installed, just update it to the latest version.
 >
 > - [ES6 Compatibility](https://caniuse.com/#search=es6)
 > - [JavaScript Modules](https://caniuse.com/#search=module)
+> - [ES6 Modules in Chrome M61+](https://medium.com/dev-channel/es6-modules-in-chrome-canary-m60-ba588dfb8ab7)
 
 ## Running the application
 
@@ -36,6 +37,22 @@ If using PowerShell:
 
 ## Possible improvements
 
+### Write Unit Tests
+
+This is a given and should have been added prior to writing any implementation code ([Test-Driven Development (TDD)](https://en.wikipedia.org/wiki/Test-driven_development)).
+
+We could also write tests for the UI; checking to see if the created HTML elements did appear as intended.
+
+There are a number of popular unit testing frameworks for JS out there but one in particular that has all the features we'll need out of the box is [Jest](https://jestjs.io/).
+
+### Use Sass
+
+Currently, our CSS is written in [BEM](http://getbem.com/). It looks unwieldy to write in pure CSS. However, it shines when you use Sass (or any other CSS language extension).
+
+It allows us to structure our CSS in a DRY way and also be able to bundle them into a single CSS file.
+
+More info: [Sass: CSS with superpowers](https://sass-lang.com/)
+
 ### Use templates
 
 One way to improve our maintenance of the HTML markup for each component is to use _templates_.
@@ -46,14 +63,6 @@ One way to improve our maintenance of the HTML markup for each component is to u
 
 > There is an available CDN link (so we don't have to use NPM or Webpack):
 > [https://cdnjs.com/libraries/mustache.js/](https://cdnjs.com/libraries/mustache.js/)
-
-### Use Sass
-
-Currently, our CSS is written in [BEM](http://getbem.com/). It looks unwieldy to write in pure CSS. However, it shines when you use Sass (or any other CSS language extension).
-
-It allows us to structure our CSS in a DRY way and also be able to bundle them into a single CSS file.
-
-More info: [Sass: CSS with superpowers](https://sass-lang.com/)
 
 ### Use React
 
