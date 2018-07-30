@@ -14,6 +14,11 @@ npm install http-server -g
 
 If Chrome is already installed, just update it to the latest version.
 
+> The app uses _ES6_ features which are, as of this writing, still a fairly new set of features and only supported by the newer versions of Chrome, Firefox, Safari, and Edge.
+>
+> - [ES6 Compatibility](https://caniuse.com/#search=es6)
+> - [JavaScript Modules](https://caniuse.com/#search=module)
+
 ## Running the application
 
 ### 1. Start the server
