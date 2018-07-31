@@ -29,6 +29,8 @@ function onFilter(showAll) {
 }
 
 function onItemToggle(id) {
+  store.toggleDone(id);
+
   update();
 }
 

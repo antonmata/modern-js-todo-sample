@@ -19,3 +19,7 @@
 .todo-list__item-text {
   margin-left: 0.3em;
 }
+
+.todo-list__icon--hidden {
+  display: none;
+}

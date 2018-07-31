@@ -8,7 +8,7 @@ export default class TodoList {
    */
   update(todoItems) {
     const elems = todoItems.map((todo, i) =>
-      this._createItemElement(i, todo.text, todo.checked)
+      this._createItemElement(i, todo.text, todo.isDone)
     );
     this._clearItemElements();
     elems.forEach(e => this._rootElement.appendChild(e));
@@ -24,6 +24,7 @@ export default class TodoList {
      */
     const root = document.getElementById(elementId);
     this._rootElement = root;
+    this._onItemToggle = onItemToggle;
     this._clearItemElements();
   }
 
@@ -33,7 +34,7 @@ export default class TodoList {
     }
   }
 
-  _createItemElement(id, text, checked) {
+  _createItemElement(id, text, isDone) {
     // TODO: Add event listeners for toggling items, make sure to call the
     //       onItemToggle callback.
 
@@ -44,17 +45,21 @@ export default class TodoList {
     input.type = 'checkbox';
     input.className = 'todo-list__item-checkbox';
     input.id = `todo_${id}`;
-    input.checked = checked;
+    input.checked = isDone;
 
     const label = document.createElement('label');
     label.className = 'todo-list__item-label';
     label.for = input.id;
 
     const iconChecked = document.createElement('i');
-    iconChecked.className = 'far fa-check-square';
+    iconChecked.className = `far fa-check-square ${
+      isDone ? 'todo-list__icon--hidden' : ''
+    }`;
 
     const iconUnchecked = document.createElement('i');
-    iconUnchecked.className = 'far fa-square';
+    iconUnchecked.className = `far fa-square ${
+      !isDone ? 'todo-list__icon--hidden' : ''
+    }`;
 
     label.appendChild(iconChecked);
     label.appendChild(iconUnchecked);
@@ -65,6 +70,14 @@ export default class TodoList {
     const textNode = document.createTextNode(text);
 
     span.appendChild(textNode);
+
+    label.addEventListener('click', event => {
+      this._onItemToggle(id);
+    });
+
+    span.addEventListener('click', event => {
+      this._onItemToggle(id);
+    });
 
     li.appendChild(input);
     li.appendChild(label);
