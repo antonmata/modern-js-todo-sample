@@ -1,6 +1,5 @@
 .todo-list {
   padding-left: 0;
-  user-select: none;
 }
 
 .todo-list__item {
@@ -14,8 +13,14 @@
 
 .todo-list__item-label {
   cursor: pointer;
+  user-select: none;
 }
 
 .todo-list__item-text {
   margin-left: 0.3em;
+  user-select: none;
+}
+
+.todo-list__item-text--done {
+  text-decoration-line: line-through;
 }

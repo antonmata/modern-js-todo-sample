@@ -1,60 +1,40 @@
 export default class FilterToggle {
-  constructor(elementId, onFilter, checked = false) {
-    this._checked = checked;
-    this._init(elementId, onFilter);
+  constructor(parentElement, onFilter) {
+    this._parentElement = parentElement;
+    this._onFilter = onFilter;
   }
 
-  /**
-   * @param {string} elementId The root element's ID.
-   * @param {Function} onFilter
-   */
-  _init(elementId, onFilter) {
-    /**
-     * @type {HTMLDivElement}
-     */
-    const root = document.getElementById(elementId);
-    /**
-     * @type {HTMLInputElement}
-     */
-    const checkbox = root.getElementsByClassName('filter-toggle__checkbox')[0];
-    const label = root.getElementsByClassName('filter-toggle__label')[0];
-    const text = root.getElementsByClassName('filter-toggle__text')[0];
+  render(showAll) {
+    const elemId = `toggle_${Date.now()}`;
+    const checked = showAll ? 'checked' : '';
 
-    const iconChecked = label.getElementsByClassName('fa-check-square')[0];
-    const iconUnchecked = label.getElementsByClassName('fa-square')[0];
+    this._parentElement.innerHTML = `
+      <div class="filter-toggle">
+        <input class="filter-toggle__checkbox" id="${elemId}" type="checkbox" ${checked} />
+        <label class="filter-toggle__label" for="${elemId}">
+          ${
+            showAll
+              ? `<i class="far fa-check-square"></i>`
+              : `<i class="far fa-square"></i>`
+          }
+        </label>
+        <span class="filter-toggle__text">Show All</span>
+      </div>
+    `;
 
-    iconUnchecked.classList.add('filter-toggle__icon--hidden');
-    iconChecked.classList.remove('filter-toggle__icon--hidden');
-
-    this._updateIcon(this._checked, iconChecked, iconUnchecked);
+    const checkbox = this._parentElement.getElementsByClassName(
+      'filter-toggle__checkbox'
+    )[0];
+    const text = this._parentElement.getElementsByClassName(
+      'filter-toggle__text'
+    )[0];
 
     checkbox.addEventListener('change', event => {
-      this._toggle(onFilter, iconChecked, iconUnchecked);
+      this._onFilter(showAll);
     });
 
     text.addEventListener('click', event => {
-      this._toggle(onFilter, iconChecked, iconUnchecked);
+      this._onFilter(showAll);
     });
-  }
-
-  /**
-   * @param {Function} onFilter
-   * @param {HTMLElement} iconChecked
-   * @param {HTMLElement} iconUnchecked
-   */
-  _toggle(onFilter, iconChecked, iconUnchecked) {
-    this._checked = !this._checked;
-    this._updateIcon(this._checked, iconChecked, iconUnchecked);
-    onFilter(this._checked);
-  }
-
-  _updateIcon(checked, iconChecked, iconUnchecked) {
-    if (checked) {
-      iconUnchecked.classList.add('filter-toggle__icon--hidden');
-      iconChecked.classList.remove('filter-toggle__icon--hidden');
-    } else {
-      iconChecked.classList.add('filter-toggle__icon--hidden');
-      iconUnchecked.classList.remove('filter-toggle__icon--hidden');
-    }
   }
 }

@@ -1,74 +1,60 @@
 export default class TodoList {
-  constructor(elementId, onItemToggle) {
-    this._init(elementId, onItemToggle);
+  constructor(parentElement, onItemToggle) {
+    this._onItemToggle = onItemToggle;
+    this._parentElement = parentElement;
   }
 
   /**
-   * @param {{ text: string, isDone: boolean }[]} todoItems
+   * @param {{ id: number, text: string, isDone: boolean }[]} todoItems
    */
-  update(todoItems) {
-    const elems = todoItems.map((todo, i) =>
-      this._createItemElement(i, todo.text, todo.checked)
-    );
-    this._clearItemElements();
-    elems.forEach(e => this._rootElement.appendChild(e));
+  render(todoItems) {
+    const ul = document.createElement('ul');
+    ul.className = 'todo-list';
+
+    todoItems.forEach(todo => {
+      const li = this._createItemElement(
+        todo.id,
+        todo.text,
+        todo.isDone,
+        this._onItemToggle
+      );
+      ul.appendChild(li);
+    });
+
+    this._parentElement.innerHTML = '';
+    this._parentElement.appendChild(ul);
   }
 
-  /**
-   * @param {string} elementId
-   * @param {Function} onItemToggle
-   */
-  _init(elementId, onItemToggle) {
-    /**
-     * @type {HTMLUListElement}
-     */
-    const root = document.getElementById(elementId);
-    this._rootElement = root;
-    this._clearItemElements();
-  }
-
-  _clearItemElements() {
-    while (this._rootElement.firstChild) {
-      this._rootElement.removeChild(this._rootElement.firstChild);
-    }
-  }
-
-  _createItemElement(id, text, checked) {
-    // TODO: Add event listeners for toggling items, make sure to call the
-    //       onItemToggle callback.
-
+  _createItemElement(id, text, isDone, onItemToggle) {
     const li = document.createElement('li');
     li.className = 'todo-list__item';
 
-    const input = document.createElement('input');
-    input.type = 'checkbox';
-    input.className = 'todo-list__item-checkbox';
-    input.id = `todo_${id}`;
-    input.checked = checked;
+    const elemId = `todo_${id}`;
+    const checked = isDone ? 'checked' : '';
+    const strikeText = isDone ? 'todo-list__item-text--done' : '';
 
-    const label = document.createElement('label');
-    label.className = 'todo-list__item-label';
-    label.for = input.id;
+    li.innerHTML = `
+      <input class="todo-list__item-checkbox" id="${elemId}" type="checkbox" ${checked} />
+      <label class="todo-list__item-label" for="${elemId}">
+        ${
+          isDone
+            ? `<i class="far fa-check-square"></i>`
+            : `<i class="far fa-square"></i>`
+        }
+      </label>
+      <span class="todo-list__item-text ${strikeText}">${text}</span>
+    `;
 
-    const iconChecked = document.createElement('i');
-    iconChecked.className = 'far fa-check-square';
+    const checkbox = li.getElementsByClassName('todo-list__item-checkbox')[0];
+    const textElem = li.getElementsByClassName('todo-list__item-text')[0];
 
-    const iconUnchecked = document.createElement('i');
-    iconUnchecked.className = 'far fa-square';
+    checkbox.addEventListener('change', event => {
+      onItemToggle(id);
+    });
 
-    label.appendChild(iconChecked);
-    label.appendChild(iconUnchecked);
-
-    const span = document.createElement('span');
-    span.className = 'todo-list__item-text';
-
-    const textNode = document.createTextNode(text);
-
-    span.appendChild(textNode);
-
-    li.appendChild(input);
-    li.appendChild(label);
-    li.appendChild(span);
+    textElem.addEventListener('click', event => {
+      onItemToggle(id);
+    });
 
     return li;
   }

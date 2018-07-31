@@ -6,11 +6,21 @@ import TodoStore from './stores/TodoStore.js';
 
 const store = new TodoStore();
 
+const formMountNode = document.getElementById('formComponent');
+const filterMountNode = document.getElementById('filterComponent');
+const todoListMountNode = document.getElementById('todoListComponent');
+
+const formComponent = new NewTodoForm(formMountNode, onAdd);
+const filterComponent = new FilterToggle(filterMountNode, onFilter);
+const todoListComponent = new TodoList(todoListMountNode, onItemToggle);
+
 /**
  * Must call this function whenever we want to update the UI
  */
-function update() {
-  todoListComponent.update(store.items);
+function render() {
+  formComponent.render();
+  filterComponent.render(store.showAll);
+  todoListComponent.render(store.items);
 }
 
 function onAdd(value) {
@@ -19,26 +29,20 @@ function onAdd(value) {
     isDone: false,
   });
 
-  update();
+  render();
 }
 
 function onFilter(showAll) {
-  store.showAll = showAll;
+  store.showAll = !showAll;
 
-  update();
+  render();
 }
 
 function onItemToggle(id) {
-  update();
+  store.toggleDone(id);
+
+  render();
 }
 
-const todoListComponent = new TodoList('todoListComponent', onItemToggle);
-const formComponent = new NewTodoForm('formComponent', onAdd);
-const filterToggleComponent = new FilterToggle(
-  'toggleComponent',
-  onFilter,
-  store.showAll
-);
-
 // Call update to initialize the UI
-update();
+render();
