@@ -1,0 +1,26 @@
+.todo-list {
+  padding-left: 0;
+
+  &__item {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &__item-checkbox {
+    display: none;
+  }
+
+  &__item-label {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &__item-text {
+    margin-left: 0.3em;
+    user-select: none;
+
+    &--done {
+      text-decoration-line: line-through;
+    }
+  }
+}
