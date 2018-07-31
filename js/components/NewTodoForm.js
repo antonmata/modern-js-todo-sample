@@ -7,7 +7,7 @@ const NewTodoForm = props => {
   const root = document.createElement('form');
   root.className = 'new-todo-form';
   root.innerHTML = `
-    <input class="new-todo-form__input" type="text" placeholder="Add todo here" />
+    <input class="new-todo-form__input" type="text" placeholder="Add to-do here" />
     <button class="new-todo-form__submit" type="submit">Add</button>
   `;
 
