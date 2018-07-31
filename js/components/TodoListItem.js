@@ -18,16 +18,16 @@ const TodoListItem = props => {
   const strikeText = todoItem.isDone ? 'todo-list__item-text--done' : '';
 
   root.innerHTML = `
-      <input class="todo-list__item-checkbox" id="${elemId}" type="checkbox" ${checked} />
-      <label class="todo-list__item-label" for="${elemId}">
-        ${
-          todoItem.isDone
-            ? `<i class="far fa-check-square"></i>`
-            : `<i class="far fa-square"></i>`
-        }
-      </label>
-      <span class="todo-list__item-text ${strikeText}">${todoItem.text}</span>
-    `;
+    <input class="todo-list__item-checkbox" id="${elemId}" type="checkbox" ${checked} />
+    <label class="todo-list__item-label" for="${elemId}">
+      ${
+        todoItem.isDone
+          ? `<i class="far fa-check-square"></i>`
+          : `<i class="far fa-square"></i>`
+      }
+    </label>
+    <span class="todo-list__item-text ${strikeText}">${todoItem.text}</span>
+  `;
 
   const checkbox = root.getElementsByClassName('todo-list__item-checkbox')[0];
   const textElem = root.getElementsByClassName('todo-list__item-text')[0];

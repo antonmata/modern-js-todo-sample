@@ -1,6 +1,6 @@
-import NewTodoForm from './NewTodoForm.js';
-import FilterToggle from './FilterToggle.js';
-import TodoList from './TodoList.js';
+import NewTodoForm from '../components/NewTodoForm.js';
+import FilterToggle from '../components/FilterToggle.js';
+import TodoList from '../components/TodoList.js';
 
 import TodoStore from '../stores/TodoStore.js';
 
@@ -21,7 +21,7 @@ export default class TodoView {
     root.className = 'todo-view';
 
     root.innerHTML = `
-      <h1 class="todo-view__header">To Do</h1>
+      <h1 class="todo-view__header">To-Do</h1>
     `;
 
     root.appendChild(

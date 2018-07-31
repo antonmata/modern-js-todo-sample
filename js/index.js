@@ -1,4 +1,4 @@
-import TodoView from './components/TodoView.js';
+import TodoView from './views/TodoView.js';
 import TodoStore from './stores/TodoStore.js';
 
 const store = new TodoStore();
