@@ -1,14 +1,11 @@
 .filter-toggle {
   user-select: none;
   font-size: 0.8em;
+  margin-bottom: 1.5em;
 }
 
 .filter-toggle__label {
   cursor: pointer;
-}
-
-.filter-toggle__icon--hidden {
-  display: none;
 }
 
 .filter-toggle__checkbox {

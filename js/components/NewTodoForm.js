@@ -1,29 +1,30 @@
-export default class NewTodoForm {
-  constructor(elementId, onAdd) {
-    this._init(elementId, onAdd);
-  }
+/**
+ * @param {{ onSubmit: function(string): void }} props
+ */
+const NewTodoForm = props => {
+  const { onSubmit } = props;
 
-  /**
-   * @param {string} elementId The root element's ID.
-   * @param {Function} onAdd A callback that is called when the submit button is clicked.
-   */
-  _init(elementId, onAdd) {
-    /**
-     * @type {HTMLFormElement}
-     */
-    const root = document.getElementById(elementId);
-    const input = root.getElementsByClassName('new-todo-form__input')[0];
-    const submit = root.getElementsByClassName('new-todo-form__submit')[0];
+  const root = document.createElement('form');
+  root.className = 'new-todo-form';
+  root.innerHTML = `
+    <input class="new-todo-form__input" type="text" placeholder="Add to-do here" />
+    <button class="new-todo-form__submit" type="submit">Add</button>
+  `;
 
-    submit.addEventListener('click', event => {
-      event.preventDefault();
+  const input = root.getElementsByClassName('new-todo-form__input')[0];
+  const submit = root.getElementsByClassName('new-todo-form__submit')[0];
 
-      if (input.value === '') {
-        return;
-      }
+  submit.addEventListener('click', event => {
+    event.preventDefault();
 
-      onAdd(input.value);
-      input.value = '';
-    });
-  }
-}
+    if (input.value === '') {
+      return;
+    }
+
+    onSubmit(input.value);
+  });
+
+  return root;
+};
+
+export default NewTodoForm;
