@@ -24,3 +24,7 @@
 .todo-list__item-text--done {
   text-decoration-line: line-through;
 }
+
+.todo-list__icon--hidden {
+  display: none;
+}
