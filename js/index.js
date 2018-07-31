@@ -1,48 +1,14 @@
-import NewTodoForm from './components/NewTodoForm.js';
-import FilterToggle from './components/FilterToggle.js';
-import TodoList from './components/TodoList.js';
-
+import TodoView from './components/TodoView.js';
 import TodoStore from './stores/TodoStore.js';
 
 const store = new TodoStore();
 
-const formMountNode = document.getElementById('formComponent');
-const filterMountNode = document.getElementById('filterComponent');
-const todoListMountNode = document.getElementById('todoListComponent');
+const mount = document.getElementById('main');
 
-const formComponent = new NewTodoForm(formMountNode, onAdd);
-const filterComponent = new FilterToggle(filterMountNode, onFilter);
-const todoListComponent = new TodoList(todoListMountNode, onItemToggle);
-
-/**
- * Must call this function whenever we want to update the UI
- */
-function render() {
-  formComponent.render();
-  filterComponent.render(store.showAll);
-  todoListComponent.render(store.items);
+function onUpdateHandler(el) {
+  mount.innerHTML = '';
+  mount.appendChild(el);
 }
 
-function onAdd(value) {
-  store.add({
-    text: value,
-    isDone: false,
-  });
-
-  render();
-}
-
-function onFilter(showAll) {
-  store.showAll = !showAll;
-
-  render();
-}
-
-function onItemToggle(id) {
-  store.toggleDone(id);
-
-  render();
-}
-
-// Call update to initialize the UI
-render();
+const view = new TodoView({ store }, onUpdateHandler);
+view.render();

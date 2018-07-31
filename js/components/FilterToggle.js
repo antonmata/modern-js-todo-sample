@@ -1,40 +1,39 @@
-export default class FilterToggle {
-  constructor(parentElement, onFilter) {
-    this._parentElement = parentElement;
-    this._onFilter = onFilter;
-  }
+/**
+ * @param {{ showAll: boolean, onFilter: function(boolean): void }} props
+ */
+const FilterToggle = props => {
+  const { showAll, onFilter } = props;
 
-  render(showAll) {
-    const elemId = `toggle_${Date.now()}`;
-    const checked = showAll ? 'checked' : '';
+  const root = document.createElement('div');
+  root.className = 'filter-toggle';
 
-    this._parentElement.innerHTML = `
-      <div class="filter-toggle">
-        <input class="filter-toggle__checkbox" id="${elemId}" type="checkbox" ${checked} />
-        <label class="filter-toggle__label" for="${elemId}">
-          ${
-            showAll
-              ? `<i class="far fa-check-square"></i>`
-              : `<i class="far fa-square"></i>`
-          }
-        </label>
-        <span class="filter-toggle__text">Show All</span>
-      </div>
-    `;
+  const elemId = `toggle_${Date.now()}`;
+  const checked = showAll ? 'checked' : '';
 
-    const checkbox = this._parentElement.getElementsByClassName(
-      'filter-toggle__checkbox'
-    )[0];
-    const text = this._parentElement.getElementsByClassName(
-      'filter-toggle__text'
-    )[0];
+  root.innerHTML = `
+    <input class="filter-toggle__checkbox" id="${elemId}" type="checkbox" ${checked} />
+    <label class="filter-toggle__label" for="${elemId}">
+      ${
+        showAll
+          ? `<i class="far fa-check-square"></i>`
+          : `<i class="far fa-square"></i>`
+      }
+    </label>
+    <span class="filter-toggle__text">Show All</span>
+  `;
 
-    checkbox.addEventListener('change', event => {
-      this._onFilter(showAll);
-    });
+  const checkbox = root.getElementsByClassName('filter-toggle__checkbox')[0];
+  const text = root.getElementsByClassName('filter-toggle__text')[0];
 
-    text.addEventListener('click', event => {
-      this._onFilter(showAll);
-    });
-  }
-}
+  checkbox.addEventListener('change', event => {
+    onFilter(showAll);
+  });
+
+  text.addEventListener('click', event => {
+    onFilter(showAll);
+  });
+
+  return root;
+};
+
+export default FilterToggle;
