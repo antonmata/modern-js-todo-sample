@@ -59,10 +59,12 @@ One way to improve our maintenance of the HTML markup for each component is to u
 
 [Mustache](https://github.com/janl/mustache.js) is a small templating library we could utilize instead of manually building our HTML (`document.createElement()`).
 
-> Obviously, if we do this, it's not "Vanilla JS" anymore.
+> Obviously, if we do this, it's not _Vanilla JS_ anymore.
 
 > There is an available CDN link (so we don't have to use NPM or Webpack):
 > [https://cdnjs.com/libraries/mustache.js/](https://cdnjs.com/libraries/mustache.js/)
+
+> For a Vanilla JS alternative, we can use [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
 
 ### Use React
 
