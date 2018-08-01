@@ -1,3 +1,5 @@
+import './NewTodoForm.scss';
+
 /**
  * @param {{ onSubmit: function(string): void }} props
  */
@@ -11,8 +13,8 @@ const NewTodoForm = props => {
     <button class="new-todo-form__submit" type="submit">Add</button>
   `;
 
-  const input = root.getElementsByClassName('new-todo-form__input')[0];
-  const submit = root.getElementsByClassName('new-todo-form__submit')[0];
+  const input = root.querySelector('.new-todo-form__input');
+  const submit = root.querySelector('.new-todo-form__submit');
 
   submit.addEventListener('click', event => {
     event.preventDefault();

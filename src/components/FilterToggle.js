@@ -1,3 +1,5 @@
+import './FilterToggle.scss';
+
 /**
  * @param {{ showAll: boolean, onFilter: function(boolean): void }} props
  */
@@ -7,7 +9,7 @@ const FilterToggle = props => {
   const root = document.createElement('div');
   root.className = 'filter-toggle';
 
-  const elemId = `toggle_${Date.now()}`;
+  const elemId = `filterToggle`;
   const checked = showAll ? 'checked' : '';
 
   root.innerHTML = `
@@ -22,15 +24,15 @@ const FilterToggle = props => {
     <span class="filter-toggle__text">Show All</span>
   `;
 
-  const checkbox = root.getElementsByClassName('filter-toggle__checkbox')[0];
-  const text = root.getElementsByClassName('filter-toggle__text')[0];
+  const checkbox = root.querySelector('.filter-toggle__checkbox');
+  const text = root.querySelector('.filter-toggle__text');
 
   checkbox.addEventListener('change', event => {
-    onFilter(showAll);
+    onFilter(!showAll);
   });
 
   text.addEventListener('click', event => {
-    onFilter(showAll);
+    onFilter(!showAll);
   });
 
   return root;

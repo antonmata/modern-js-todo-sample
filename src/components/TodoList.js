@@ -1,3 +1,5 @@
+import './TodoList.scss';
+
 import TodoListItem from './TodoListItem';
 
 /**

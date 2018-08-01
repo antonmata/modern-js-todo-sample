@@ -1,3 +1,5 @@
+import './TodoView.scss';
+
 import NewTodoForm from '../components/NewTodoForm';
 import FilterToggle from '../components/FilterToggle';
 import TodoList from '../components/TodoList';
@@ -55,7 +57,7 @@ export default class TodoView {
   }
 
   _onFilterHandler(showAll) {
-    this._props.store.showAll = !showAll;
+    this._props.store.showAll = showAll;
 
     this.render();
   }

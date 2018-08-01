@@ -1,4 +1,4 @@
-import '../scss/index.scss';
+import './index.scss';
 
 import TodoView from './views/TodoView';
 import TodoStore from './stores/TodoStore';
