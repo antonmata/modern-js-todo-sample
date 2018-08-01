@@ -34,7 +34,7 @@ it('should display the correct icon when showAll is false', () => {
   expect(actual.querySelector('i').className).toEqual('far fa-square');
 });
 
-it('should call the onFilter callback with showAll value flipped when label is clicked', () => {
+it('should call the onFilter callback, with showAll value flipped, when label is clicked', () => {
   const mockOnFilterCallback = jest.fn();
 
   const actual = FilterToggle({
