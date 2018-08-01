@@ -1,0 +1,36 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.todo-list {
+  padding-left: 0;
+}
+.todo-list__item {
+  list-style: none;
+  cursor: pointer;
+}
+.todo-list__item-checkbox {
+  display: none;
+}
+.todo-list__item-label {
+  cursor: pointer;
+  user-select: none;
+}
+.todo-list__item-text {
+  margin-left: 0.3em;
+  user-select: none;
+}
+.todo-list__item-text--done {
+  text-decoration-line: line-through;
+}
+
+/*# sourceMappingURL=index.css.map */
