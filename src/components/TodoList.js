@@ -1,4 +1,4 @@
-import TodoListItem from './TodoListItem.js';
+import TodoListItem from './TodoListItem';
 
 /**
  * @typedef {object} TodoItem

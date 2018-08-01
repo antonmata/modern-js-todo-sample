@@ -1,0 +1,45 @@
+{
+  "name": "modern-js-todo-sample",
+  "version": "1.0.0",
+  "description": "A simple To-Do application written in modern, vanilla JS.",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --watch --devtool source-map --mode development",
+    "build": "webpack --debug --devtool source-map --mode development",
+    "build-prod": "yarn install && cross-env NODE_ENV=production webpack --run-prod",
+    "start": "reload -b -p 4000 -d build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonmata/modern-js-todo-sample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonmata/modern-js-todo-sample/issues"
+  },
+  "homepage": "https://github.com/antonmata/modern-js-todo-sample#readme",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.2.0",
+    "awesome-typescript-loader": "^5.2.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.3.1",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "normalize.css": "^8.0.0",
+    "reload": "^2.3.0",
+    "sass-loader": "^7.0.3",
+    "source-map-loader": "^0.2.3",
+    "style-loader": "^0.21.0",
+    "typescript": "^3.0.1",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.3",
+    "webpack-command": "^0.4.1"
+  }
+}

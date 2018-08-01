@@ -1,8 +1,8 @@
-import NewTodoForm from '../components/NewTodoForm.js';
-import FilterToggle from '../components/FilterToggle.js';
-import TodoList from '../components/TodoList.js';
+import NewTodoForm from '../components/NewTodoForm';
+import FilterToggle from '../components/FilterToggle';
+import TodoList from '../components/TodoList';
 
-import TodoStore from '../stores/TodoStore.js';
+import TodoStore from '../stores/TodoStore';
 
 export default class TodoView {
   /**
