@@ -1,6 +1,10 @@
 import { add, sub, mul, div } from './math-utils';
 
 describe('add', () => {
+  it('should not crash', () => {
+    expect(() => add(1, 2)).not.toThrow();
+  });
+
   it('should equal to 3 if 1 + 2', () => {
     expect(add(1, 2)).toBe(3);
   });
