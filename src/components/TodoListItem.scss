@@ -1,21 +1,17 @@
-.todo-list {
-  padding-left: 0;
+.todo-list-item {
+  list-style: none;
+  cursor: pointer;
 
-  &__item {
-    list-style: none;
-    cursor: pointer;
-  }
-
-  &__item-checkbox {
+  &__checkbox {
     display: none;
   }
 
-  &__item-label {
+  &__label {
     cursor: pointer;
     user-select: none;
   }
 
-  &__item-text {
+  &__text {
     margin-left: 0.3em;
     user-select: none;
 

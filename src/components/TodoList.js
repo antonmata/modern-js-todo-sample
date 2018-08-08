@@ -1,4 +1,8 @@
-import TodoListItem from './TodoListItem.js';
+import './TodoList.css';
+
+import React from 'react';
+
+import TodoListItem from './TodoListItem';
 
 /**
  * @typedef {object} TodoItem
@@ -12,15 +16,11 @@ import TodoListItem from './TodoListItem.js';
 const TodoList = props => {
   const { todoItems, onItemToggle } = props;
 
-  const root = document.createElement('ul');
-  root.className = 'todo-list';
+  const listItems = todoItems.map((v, i) => (
+    <TodoListItem key={i} todoItem={v} onItemToggle={onItemToggle} />
+  ));
 
-  todoItems.forEach(todo => {
-    const li = TodoListItem({ todoItem: todo, onItemToggle });
-    root.appendChild(li);
-  });
-
-  return root;
+  return <ul className="todo-list">{listItems}</ul>;
 };
 
 export default TodoList;

@@ -1,0 +1,18 @@
+.filter-toggle {
+  user-select: none;
+  font-size: 0.8em;
+  margin-bottom: 1.5em;
+
+  &__label {
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__text {
+    cursor: pointer;
+    font-style: italic;
+  }
+}
