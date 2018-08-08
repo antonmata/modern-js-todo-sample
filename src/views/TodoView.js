@@ -15,31 +15,31 @@ class TodoView extends Component {
       <div className="todo-view">
         <h1 className="todo-view__header">To-Do</h1>
 
-        <NewTodoForm onSubmit={v => this._onSubmitHandler(v)} />
+        <NewTodoForm onSubmit={v => this._handleSubmit(v)} />
         <FilterToggle
           showAll={store.showAll}
-          onFilter={s => this._onFilterHandler(s)}
+          onFilter={s => this._handleFilter(s)}
         />
         <TodoList
           todoItems={store.items}
-          onItemToggle={id => this._onItemToggleHandler(id)}
+          onItemToggle={id => this._handleItemToggle(id)}
         />
       </div>
     );
   }
 
-  _onSubmitHandler(value) {
+  _handleSubmit(value) {
     this.props.store.add({
       text: value,
       isDone: false,
     });
   }
 
-  _onFilterHandler(showAll) {
+  _handleFilter(showAll) {
     this.props.store.showAll = showAll;
   }
 
-  _onItemToggleHandler(id) {
+  _handleItemToggle(id) {
     this.props.store.toggleDone(id);
   }
 }
