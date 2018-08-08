@@ -1,6 +1,7 @@
 import './FilterToggle.css';
 
 import React from 'react';
+import { observer } from 'mobx-react';
 
 const FilterToggle = props => {
   const { showAll, onFilter } = props;
@@ -30,4 +31,4 @@ const FilterToggle = props => {
   );
 };
 
-export default FilterToggle;
+export default observer(FilterToggle);

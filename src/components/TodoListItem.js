@@ -1,13 +1,16 @@
 import './TodoListItem.css';
 
 import React from 'react';
+import { observer } from 'mobx-react';
+import classNames from 'classnames';
 
 const TodoListItem = props => {
   const { todoItem, onItemToggle } = props;
 
   const elemId = `todo_${todoItem.id}`;
-  const strikeText = todoItem.isDone ? 'todo-list-item__text--done' : '';
-  const spanClass = `todo-list-item__text ${strikeText}`;
+  const spanClass = classNames('todo-list-item__text', {
+    'todo-list-item__text--done': todoItem.isDone,
+  });
 
   const icon = todoItem.isDone ? (
     <i className="far fa-check-square" />
@@ -34,4 +37,4 @@ const TodoListItem = props => {
   );
 };
 
-export default TodoListItem;
+export default observer(TodoListItem);

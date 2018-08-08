@@ -1,6 +1,7 @@
 import './TodoList.css';
 
 import React from 'react';
+import { observer } from 'mobx-react';
 
 import TodoListItem from './TodoListItem';
 
@@ -23,4 +24,4 @@ const TodoList = props => {
   return <ul className="todo-list">{listItems}</ul>;
 };
 
-export default TodoList;
+export default observer(TodoList);
